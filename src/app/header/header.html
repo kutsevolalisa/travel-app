@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">Travel Explorer</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+      <div class="d-flex justify-content-center flex-grow-1">
+        <app-top-menu></app-top-menu>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <form class="d-flex me-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Пошук місць..." aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Пошук</button>
+        </form>
+        <app-auth-menu></app-auth-menu>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,1 +1,10 @@
-<p>item-card works!</p>
+<div class="card mb-4" [ngClass]="{'bg-light text-muted': !trip.isAvailable}">
+  <img [src]="trip.imageUrl" class="card-img-top" alt="{{ trip.destination }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ trip.destination }}</h5>
+    <p class="card-text">{{ trip.description }}</p>
+    <p class="card-text"><strong>Ціна:</strong> {{ trip.price | currency }}</p>
+    <p *ngIf="!trip.isAvailable" class="text-danger fw-bold">Немає вільних місць</p>
+    <a href="#" class="btn btn-primary" [class.disabled]="!trip.isAvailable">Детальніше</a>
+  </div>
+</div>

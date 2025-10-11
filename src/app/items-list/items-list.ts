@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { Trip } from '../shared/models/trip.model';
-import { CommonModule, CurrencyPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { ItemCard } from '../item-card/item-card';
 
 @Component({
   selector: 'app-items-list',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, ItemCard],
   templateUrl: './items-list.html',
-  styleUrl: './items-list.css'
+  styleUrls: ['./items-list.css']
 })
 export class ItemsList {
   trips:Trip[] = [

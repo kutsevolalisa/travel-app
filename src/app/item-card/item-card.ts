@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Trip } from '../shared/models/trip.model';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-item-card',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, CurrencyPipe],
   templateUrl: './item-card.html',
-  styleUrl: './item-card.css'
+  styleUrls: ['./item-card.css']
 })
 export class ItemCard {
-
+  @Input() trip!: Trip;
 }
