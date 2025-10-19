@@ -1,7 +1,16 @@
 <div class="container mt-4">
+  <input
+    type="text"
+    class="form-control mb-3"
+    placeholder="Пошук..."
+    [(ngModel)]="searchText">
+
   <div class="row">
-    <div class="col-md-4" *ngFor="let trip of trips">
-      <app-item-card [trip]="trip"></app-item-card>
+    <div class="col-md-4" *ngFor="let trip of filteredTrips">
+      <app-item-card 
+        [trip]="trip"
+        (tripSelected)="onTripSelected($event)">
+      </app-item-card>
     </div>
   </div>
 </div>

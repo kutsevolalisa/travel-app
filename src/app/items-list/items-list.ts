@@ -2,15 +2,27 @@ import { Component } from '@angular/core';
 import { Trip } from '../shared/models/trip.model';
 import { CommonModule } from '@angular/common';
 import { ItemCard } from '../item-card/item-card';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCard],
+  imports: [CommonModule, ItemCard, FormsModule],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
 export class ItemsList {
+  
+  onTripSelected(trip: Trip) {
+    console.log('Обрана подорож:', trip);
+  }
+
+  searchText: string = '';
+
+  get filteredTrips(): Trip[] {
+    return this.trips.filter(trip => trip.destination.toLowerCase().includes(this.searchText.toLowerCase()));
+  }
+
   trips:Trip[] = [
     {
       id: 1,

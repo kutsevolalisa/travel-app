@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter  } from '@angular/core';
 import { Trip } from '../shared/models/trip.model';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 
@@ -11,4 +11,10 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 })
 export class ItemCard {
   @Input() trip!: Trip;
+
+  @Output() tripSelected = new EventEmitter<Trip>();
+
+  onDetailsClick() {
+    this.tripSelected.emit(this.trip);
+  }
 }
