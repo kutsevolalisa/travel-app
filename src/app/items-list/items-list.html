@@ -3,10 +3,11 @@
     type="text"
     class="form-control mb-3"
     placeholder="Пошук..."
-    [(ngModel)]="searchText">
+    [(ngModel)]="searchText"
+    (input)="onSearchChange()">
 
   <div class="row">
-    <div class="col-md-4" *ngFor="let trip of filteredTrips">
+    <div class="col-md-4" *ngFor="let trip of trips">
       <app-item-card 
         [trip]="trip"
         (tripSelected)="onTripSelected($event)">

@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Trip } from './shared/models/trip.model';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  
+  getItems(): Observable<Trip[]> {
+    return of(this.trips);
+  }
+  
   private trips:Trip[] = [
     {
       id: 1,
@@ -47,7 +53,13 @@ export class DataService {
     }
   ];
 
-  getItems(): Trip[] {
-    return this.trips;
+  private tripsSubject = new BehaviorSubject<Trip[]>(this.trips);
+  trips$ = this.tripsSubject.asObservable();
+
+  filterTrips(searchText: string) {
+    const filtered = this.trips.filter(trip =>
+      trip.destination.toLowerCase().includes(searchText.toLowerCase())
+    );
+    this.tripsSubject.next(filtered);
   }
 }
