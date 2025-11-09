@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ItemsList } from '../items-list/items-list';
 import { Header } from '../header/header';
 
 @Component({
@@ -8,9 +7,9 @@ import { Header } from '../header/header';
   templateUrl: './layout.html',
   styleUrls: ['./layout.css'],
   standalone: true,
-  imports: [RouterOutlet, ItemsList, Header]
+  imports: [RouterOutlet, Header]
 })
-export class LayoutComponent {
+export class Layout {
   title = 'Подорожі';
 }
 

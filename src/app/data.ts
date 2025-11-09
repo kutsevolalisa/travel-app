@@ -62,4 +62,12 @@ export class DataService {
     );
     this.tripsSubject.next(filtered);
   }
+
+  getTripById(id: number): Trip | undefined {
+    return this.trips.find(trip => trip.id === id);
+  }
+
+  getAllTrips(): Trip[] {
+    return this.trips;
+  }
 }

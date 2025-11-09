@@ -1,0 +1,9 @@
+<div class="container mt-4" *ngIf="trip">
+  <h2>{{ trip.destination }}</h2>
+  <img [src]="trip.imageUrl" alt="{{ trip.destination }}" class="img-fluid rounded mb-3">
+  <p><strong>Опис:</strong> {{ trip.description }}</p>
+  <p><strong>Транспорт:</strong> {{ trip.transport }}</p>
+  <p><strong>Проживання:</strong> {{ trip.accommodation }}</p>
+  <p><strong>Ціна:</strong> {{ trip.price }} $</p>
+  <p><strong>Місць доступно:</strong> {{ trip.availableSeats }}</p>
+</div>

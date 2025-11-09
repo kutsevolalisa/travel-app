@@ -5,11 +5,11 @@
     <p class="card-text">{{ trip.description }}</p>
     <p class="card-text"><strong>Ціна:</strong> {{ trip.price | currency }}</p>
     <p *ngIf="!trip.isAvailable" class="text-danger fw-bold">Немає вільних місць</p>
-    <button
-      class="btn btn-primary"
-      [disabled]="!trip.isAvailable"
-      (click)="onDetailsClick()">
+    <a 
+      [routerLink]="trip.isAvailable ? ['/items', trip.id] : null" 
+      [ngClass]="{'btn-secondary disabled': !trip.isAvailable, 'btn-primary': trip.isAvailable}"
+      class="btn mt-3">
       Детальніше
-    </button>
+    </a>
   </div>
 </div>

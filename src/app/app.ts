@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { LayoutComponent } from './layout/layout';
+import { Layout } from './layout/layout';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
   standalone: true,
-  imports: [LayoutComponent]
+  imports: [Layout]
 })
 export class AppComponent {
   protected readonly title = signal('travel-app');
