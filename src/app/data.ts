@@ -21,7 +21,7 @@ export class DataService {
       availableSeats: 5,
       transport: 'Літак',
       accommodation: 'Готель 4*',
-      description: 'Романтична подорож у серце Франції.',
+      description: 'Романтична подорож у серце Франції, де ви зможете прогулятися вуличками Монмартру, насолодитися краєвидом з Ейфелевої вежі, відвідати Лувр і скуштувати справжні французькі круасани у маленьких кав’ярнях Парижа.',
       imageUrl: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80',
       isAvailable: true
     },
@@ -34,7 +34,7 @@ export class DataService {
       availableSeats: 3,
       transport: 'Літак',
       accommodation: 'Апартаменти',
-      description: 'Сучасна культура та стародавні традиції.',
+      description: 'Захоплива мандрівка до Токіо — міста, де сучасні технології гармонійно поєднуються з давніми традиціями. Ви відвідаєте величні храми Асакуса, шумні перехрестя Шибуї, скуштуєте суші у місцевих ресторанах та побачите неповторну культуру Японії.',
       imageUrl: 'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       isAvailable: true
     },
@@ -47,7 +47,7 @@ export class DataService {
       availableSeats: 0,
       transport: 'Літак',
       accommodation: 'Готель 3*',
-      description: 'Відкрий для себе піраміди та Ніл.',
+      description: 'Неймовірна подорож до стародавнього Каїра, міста фараонів і пірамід. Ви відвідаєте одне з чудес світу — піраміди Гізи, помилуєтесь величним Сфінксом, здійсните прогулянку по Нілу та відкриєте для себе таємниці єгипетської цивілізації.',
       imageUrl: 'https://images.unsplash.com/photo-1626692880062-35c360fb6afc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       isAvailable: false
     }
@@ -65,9 +65,5 @@ export class DataService {
 
   getTripById(id: number): Trip | undefined {
     return this.trips.find(trip => trip.id === id);
-  }
-
-  getAllTrips(): Trip[] {
-    return this.trips;
   }
 }

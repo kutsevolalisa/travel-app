@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Trip } from '../shared/models/trip.model';
 import { CommonModule } from '@angular/common';
 import { ItemCard } from '../item-card/item-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-items-list',
@@ -13,30 +13,15 @@ import { Subscription } from 'rxjs';
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
-
-export class ItemsList implements OnInit {
-  trips: Trip[] = [];
+export class ItemsList {
+  trips$!: Observable<Trip[]>;
   searchText: string = '';
-  subscription!: Subscription;
 
-  constructor(private dataService: DataService) {}
-
-  ngOnInit(): void {
-    this.subscription = this.dataService.trips$.subscribe(items => {
-      this.trips = items;
-    });
-    this.dataService.filterTrips('');
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  constructor(private dataService: DataService) {
+    this.trips$ = this.dataService.trips$;
   }
 
   onSearchChange(): void {
     this.dataService.filterTrips(this.searchText);
-  }
-
-  onTripSelected(trip: Trip) {
-    console.log('Обрана подорож:', trip);
   }
 }
