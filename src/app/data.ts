@@ -66,4 +66,14 @@ export class DataService {
   getTripById(id: number): Trip | undefined {
     return this.trips.find(trip => trip.id === id);
   }
+
+  getNextId(): number {
+    if (!this.trips || this.trips.length === 0) return 1;
+    return Math.max(...this.trips.map(t => t.id)) + 1;
+  }
+
+  addItem(trip: Trip) {
+    this.trips.push(trip);
+    this.tripsSubject.next(this.trips);
+  }
 }

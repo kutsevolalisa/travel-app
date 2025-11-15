@@ -5,11 +5,12 @@ import { ItemCard } from '../item-card/item-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data';
 import { Observable } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCard, FormsModule],
+  imports: [CommonModule, ItemCard, FormsModule, RouterModule],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })

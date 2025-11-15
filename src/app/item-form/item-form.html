@@ -1,0 +1,80 @@
+<div class="container mt-4">
+  <h2>Додати нову подорож</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="mb-3">
+      <label>Місце призначення</label>
+      <input class="form-control" formControlName="destination">
+      <div class="text-danger" *ngIf="form.controls.destination.invalid && form.controls.destination.touched">
+        Це поле є обов'язковим.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Опис</label>
+      <textarea class="form-control" formControlName="description"></textarea>
+      <div class="text-danger" *ngIf="form.controls.description.invalid && form.controls.description.touched">
+        Це поле є обов'язковим.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Ціна</label>
+      <input type="number" class="form-control" formControlName="price">
+      <div class="text-danger" *ngIf="form.controls.price.invalid && form.controls.price.touched">
+        Введіть коректну ціну (більше 0).
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Image URL</label>
+      <input class="form-control" formControlName="imageUrl">
+      <div class="text-danger" *ngIf="form.controls.imageUrl.invalid && form.controls.imageUrl.touched">
+        Це поле є обов'язковим.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Транспорт</label>
+      <input class="form-control" formControlName="transport">
+      <div class="text-danger" *ngIf="form.controls.transport.invalid && form.controls.transport.touched">
+        Це поле є обов'язковим.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Проживання</label>
+      <input class="form-control" formControlName="accommodation">
+      <div class="text-danger" *ngIf="form.controls.accommodation.invalid && form.controls.accommodation.touched">
+        Це поле є обов'язковим.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Дата початку</label>
+      <input type="date" class="form-control" formControlName="startDate">
+      <div class="text-danger" *ngIf="form.controls.startDate.invalid && form.controls.startDate.touched">
+        Оберіть дату початку подорожі.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Дата закінчення</label>
+      <input type="date" class="form-control" formControlName="endDate">
+      <div class="text-danger" *ngIf="form.controls.endDate.invalid && form.controls.endDate.touched">
+        Оберіть дату закінчення подорожі.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Кількість вільних місць</label>
+      <input type="number" class="form-control" formControlName="availableSeats">
+      <div class="text-danger" *ngIf="form.controls.availableSeats.invalid && form.controls.availableSeats.touched">
+        Введіть коректну кількість місць (0 або більше).
+      </div>
+    </div>
+
+    <button class="btn btn-primary">Додати</button>
+  </form>
+</div>
