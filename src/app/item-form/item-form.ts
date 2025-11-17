@@ -35,8 +35,7 @@ export class ItemForm {
 
     const value = this.form.value;
 
-    const newTrip: Trip = {
-      id: this.dataService.getNextId(),
+    const newTrip: Omit<Trip, 'id'> = {
       destination: value.destination!,
       description: value.description!,
       price: Number(value.price!),
@@ -49,10 +48,16 @@ export class ItemForm {
       isAvailable: Number(value.availableSeats!) > 0
     };
 
-    this.dataService.addItem(newTrip);
-    alert("Елемент успішно додано!");
-    this.form.reset();
-
-    this.router.navigate(['/items']);
+    this.dataService.addItem(newTrip).subscribe({
+      next: (createdTrip) => {
+        alert(`Елемент успішно додано! ID = ${createdTrip.id}`);
+        this.form.reset();
+        this.router.navigate(['/items']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Помилка при додаванні елемента. Спробуйте пізніше.');
+      }
+    });
   }
 }

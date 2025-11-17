@@ -5,7 +5,9 @@ import { ItemCard } from '../item-card/item-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { RouterModule } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-items-list',
@@ -18,11 +20,34 @@ export class ItemsList {
   trips$!: Observable<Trip[]>;
   searchText: string = '';
 
-  constructor(private dataService: DataService) {
-    this.trips$ = this.dataService.trips$;
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.loadTrips();
+  }
+
+  loadTrips() {
+    this.trips$ = this.dataService.getItems().pipe(
+      catchError(err => {
+        console.error(err);
+        alert('Не вдалося завантажити список подорожей');
+        return [];
+      })
+    );
   }
 
   onSearchChange(): void {
-    this.dataService.filterTrips(this.searchText);
+    this.trips$ = this.dataService.getItems().pipe(
+      map(trips =>
+        trips.filter(trip =>
+          trip.destination.toLowerCase().includes(this.searchText.toLowerCase())
+        )
+      ),
+      catchError(err => {
+        console.error(err);
+        alert('Помилка пошуку подорожей');
+        return [];
+      })
+    );
   }
 }

@@ -23,12 +23,17 @@ export class ItemDetails implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.trip = this.dataService.getTripById(id);
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.sub = this.dataService.getTripById(id).subscribe({
+      next: (trip) => this.trip = trip,
+      error: (err) => {
+        console.error(err);
+        alert('Не вдалося завантажити подорож');
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 }
-
