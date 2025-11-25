@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <h2>Login</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="mb-3">
+      <label>Email</label>
+      <input class="form-control" formControlName="email" placeholder="Email">
+      <div class="text-danger" *ngIf="form.controls.email.invalid && form.controls.email.touched">
+        Введіть коректний email.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Password</label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Password">
+      <div class="text-danger" *ngIf="form.controls.password.invalid && form.controls.password.touched">
+        Введіть пароль.
+      </div>
+    </div>
+
+    <button class="btn btn-primary">Login</button>
+  </form>
+</div>
